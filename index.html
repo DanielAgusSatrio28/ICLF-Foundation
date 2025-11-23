@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICLF Foundation - Yayasan Pemimpin Perubahan Indonesia</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --cream-primary: #FFF8E1;
+            --cream-secondary: #F5E6D3;
+            --cream-accent: #D2B48C;
+            --cream-dark: #8B7355;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --accent-blue: #2C5282;
+            --accent-gold: #D4AF37;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        /* Logo Styles */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-img {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-img:hover {
+            transform: scale(1.1);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .logo-main {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--cream-dark);
+        }
+
+        .logo-sub {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            font-weight: 400;
+        }
+
+        /* Navigation - Enhanced Responsive */
+        .navbar {
+            background: rgba(255, 248, 225, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            padding: 15px 0;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--cream-dark) !important;
+        }
+
+        .navbar-nav .nav-link {
+            color: var(--text-dark) !important;
+            font-weight: 500;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 8px 0 !important;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: var(--accent-blue) !important;
+        }
+
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-gold);
+            transition: width 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile Navigation */
+        .navbar-toggler {
+            border: none;
+            padding: 5px;
+            background: transparent;
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: none;
+            outline: none;
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%288B7355, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+            width: 24px;
+            height: 24px;
+        }
+
+        @media (max-width: 991px) {
+            .navbar-collapse {
+                background: rgba(255, 248, 225, 0.98);
+                padding: 20px;
+                border-radius: 10px;
+                margin-top: 10px;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            }
+
+            .navbar-nav {
+                text-align: center;
+            }
+
+            .navbar-nav .nav-link {
+                margin: 10px 0;
+                font-size: 1.1rem;
+            }
+
+            .navbar-nav .nav-link::after {
+                display: none;
+            }
+        }
+
+        /* Hero Section - Responsive */
+        .hero-section {
+            background: linear-gradient(135deg, var(--cream-primary) 0%, var(--cream-secondary) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 120px 0 80px;
+        }
+
+        .hero-logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.03;
+            width: 600px;
+            height: 600px;
+            pointer-events: none;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--cream-dark);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-content .subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .btn-primary-custom {
+            background: var(--accent-blue);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 5px;
+            font-size: 1rem;
+        }
+
+        .btn-primary-custom:hover {
+            background: #1a365d;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(44, 82, 130, 0.3);
+            color: white;
+        }
+
+        .btn-outline-custom {
+            background: transparent;
+            color: var(--accent-blue);
+            padding: 12px 30px;
+            border: 2px solid var(--accent-blue);
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 5px;
+            font-size: 1rem;
+        }
+
+        .btn-outline-custom:hover {
+            background: var(--accent-blue);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Image Container - Responsive */
+        .hero-image-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            background: white;
+            padding: 10px;
+            margin-top: 30px;
+        }
+
+        .hero-image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            transition: transform 0.5s ease;
+        }
+
+        .hero-image-container:hover img {
+            transform: scale(1.05);
+        }
+
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            padding: 30px 20px 20px;
+            border-radius: 0 0 15px 15px;
+            color: white;
+        }
+
+        .image-overlay h5 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .image-overlay p {
+            font-size: 0.9rem;
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 100px 0 60px;
+                text-align: center;
+            }
+
+            .hero-buttons {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .btn-primary-custom, .btn-outline-custom {
+                width: 100%;
+                max-width: 280px;
+            }
+
+            .image-overlay {
+                padding: 20px 15px 15px;
+            }
+
+            .image-overlay h5 {
+                font-size: 1rem;
+            }
+
+            .image-overlay p {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Section Styles - Responsive */
+        .section-padding {
+            padding: clamp(60px, 8vw, 80px) 0;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: var(--cream-dark);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* About Section - Responsive */
+        .about-section {
+            background: white;
+        }
+
+        .about-card {
+            background: var(--cream-primary);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            height: 100%;
+            transition: transform 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .about-icon {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .about-card {
+                padding: 1.5rem;
+            }
+
+            .about-card h4 {
+                font-size: 1.2rem;
+            }
+
+            .about-card p {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Programs Section - Responsive */
+        .programs-section {
+            background: var(--cream-secondary);
+        }
+
+        .program-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+            margin-bottom: 30px;
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .program-img {
+            height: 200px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-gold));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .program-content {
+            padding: 1.5rem;
+        }
+
+        .program-content h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .program-content p {
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .program-img {
+                height: 150px;
+                font-size: 2rem;
+            }
+
+            .program-content {
+                padding: 1rem;
+            }
+
+            .program-content h4 {
+                font-size: 1.1rem;
+            }
+
+            .program-content p {
+                font-size: 0.85rem;
+            }
+
+            .btn-primary-custom {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Impact Section - Responsive */
+        .impact-section {
+            background: white;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--cream-primary);
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: scale(1.05);
+            background: var(--cream-secondary);
+        }
+
+        .stat-number {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            color: var(--accent-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+        }
+
+        @media (max-width: 768px) {
+            .stat-card {
+                padding: 1.5rem;
+                margin-bottom: 1rem;
+            }
+        }
+
+        /* News Section - Responsive */
+        .news-section {
+            background: var(--cream-secondary);
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+            margin-bottom: 30px;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .news-img {
+            height: 200px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .news-content {
+            padding: 1.5rem;
+        }
+
+        .news-meta {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .news-content h5 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .news-content p {
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .news-img {
+                height: 150px;
+                font-size: 1.5rem;
+            }
+
+            .news-content {
+                padding: 1rem;
+            }
+
+            .news-content h5 {
+                font-size: 1rem;
+            }
+
+            .news-content p {
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Contact Section - Responsive */
+        .contact-section {
+            background: white;
+        }
+
+        .contact-form {
+            background: var(--cream-primary);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .form-control, .form-select {
+            border: none;
+            border-radius: 10px;
+            padding: 12px 15px;
+            background: white;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .form-control:focus, .form-select:focus {
+            box-shadow: 0 0 0 3px rgba(44, 82, 130, 0.2);
+            border-color: var(--accent-blue);
+        }
+
+        @media (max-width: 768px) {
+            .contact-form {
+                padding: 1.5rem;
+            }
+
+            .form-control, .form-select {
+                padding: 10px 12px;
+                font-size: 0.9rem;
+            }
+
+            textarea.form-control {
+                min-height: 100px;
+            }
+        }
+
+        /* Footer - Responsive */
+        footer {
+            background: var(--cream-dark);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo-img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-logo-main {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .footer-logo-sub {
+            font-size: 0.85rem;
+            color: var(--cream-accent);
+        }
+
+        .footer-widget h5 {
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-widget ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-widget ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-widget ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .footer-widget ul li a:hover {
+            color: var(--accent-gold);
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--accent-gold);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 2rem;
+            padding-top: 1rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            footer {
+                padding: 2rem 0 1rem;
+            }
+
+            .footer-logo {
+                justify-content: center;
+                text-align: center;
+            }
+
+            .footer-logo-main {
+                font-size: 1.3rem;
+            }
+
+            .footer-logo-sub {
+                font-size: 0.75rem;
+            }
+
+            .footer-widget {
+                text-align: center;
+                margin-bottom: 2rem;
+            }
+
+            .footer-widget h5 {
+                font-size: 1.1rem;
+            }
+
+            .social-icons {
+                justify-content: center;
+                display: flex;
+                margin-top: 1rem;
+            }
+
+            .footer-bottom {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Loading Animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--cream-primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--cream-secondary);
+            border-top: 5px solid var(--accent-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Back to Top Button - Responsive */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--accent-blue);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+        }
+
+        .back-to-top:hover {
+            background: var(--accent-gold);
+            transform: translateY(-5px);
+        }
+
+        @media (max-width: 768px) {
+            .back-to-top {
+                width: 45px;
+                height: 45px;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .back-to-top i {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Responsive Typography */
+        @media (max-width: 576px) {
+            .logo-main {
+                font-size: 1.2rem;
+            }
+
+            .logo-sub {
+                font-size: 0.65rem;
+            }
+
+            .logo-img {
+                width: 35px;
+                height: 35px;
+            }
+
+            .navbar {
+                padding: 10px 0;
+            }
+
+            .section-title {
+                margin-bottom: 0.5rem;
+            }
+
+            .section-subtitle {
+                margin-bottom: 2rem;
+            }
+        }
+
+        /* Touch-friendly interactions */
+        @media (hover: none) and (pointer: coarse) {
+            .program-card:hover,
+            .news-card:hover,
+            .about-card:hover,
+            .stat-card:hover {
+                transform: none;
+            }
+
+            .btn-primary-custom:hover,
+            .btn-outline-custom:hover {
+                transform: none;
+            }
+        }
+
+        /* Prevent horizontal scroll */
+        .row {
+            margin: 0;
+        }
+
+        .container, .container-fluid {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        /* Better image handling */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Mobile-specific adjustments */
+        @media (max-width: 768px) {
+            .hero-logo {
+                width: 300px;
+                height: 300px;
+            }
+
+            .text-center-mobile {
+                text-align: center !important;
+            }
+
+            .mt-3-mobile {
+                margin-top: 1rem !important;
+            }
+
+            .mb-4-mobile {
+                margin-bottom: 1.5rem !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <div class="logo-container">
+                    <img src="https://z-cdn-media.chatglm.cn/files/64bb3391-bca4-4728-ae7e-21bbc4ab7da9_logo.jpg?auth_key=1863876218-410ca333e7c14782a6a019f501ef1629-0-ba442968cd35ddb4c585faa6bf6927a2" alt="ICLF Foundation Logo" class="logo-img">
+                    <div class="logo-text">
+                        <span class="logo-main">ICLF FOUNDATION</span>
+                        <span class="logo-sub">Yayasan Pemimpin Perubahan Indonesia</span>
+                    </div>
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">Tentang</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#programs">Program</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#impact">Dampak</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#news">Berita</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Kontak</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <!-- Background Logo -->
+        <img src="https://z-cdn-media.chatglm.cn/files/64bb3391-bca4-4728-ae7e-21bbc4ab7da9_logo.jpg?auth_key=1863876218-410ca333e7c14782a6a019f501ef1629-0-ba442968cd35ddb4c585faa6bf6927a2" alt="ICLF Foundation Logo Background" class="hero-logo">
+        
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6">
+                    <div class="hero-content" data-aos="fade-right">
+                        <h1>Yayasan Pemimpin Perubahan Indonesia</h1>
+                        <p class="subtitle">Menciptakan generasi pemimpin yang berkomitmen untuk perubahan positif Indonesia</p>
+                        <div class="hero-buttons">
+                            <a href="#programs" class="btn-primary-custom">Lihat Program Kami</a>
+                            <a href="#contact" class="btn-outline-custom">Bergabung Bersama</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-image text-center" data-aos="fade-left">
+                        <div class="hero-image-container">
+                            <img src="https://z-cdn-media.chatglm.cn/files/cd78536c-85a0-4061-8508-5c7a4db1c453_pasted_image_1763876647711.png?auth_key=1863876673-1c4d622fec374c3a886d6b6508df090e-0-ff81a4c98824ff0ba39630930162f5de" 
+                                 alt="ICLF Foundation Activities" 
+                                 class="img-fluid">
+                            <div class="image-overlay">
+                                <h5>Bersama Menciptakan Perubahan</h5>
+                                <p>Sesi pelatihan dan pembinaan dengan para pemuda Indonesia</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section section-padding" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="section-title" data-aos="fade-up">Tentang ICLF Foundation</h2>
+                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                        THE INDONESIAN CHANGE LEADING FOUNDATION (ICLF Foundation) adalah organisasi sosial yang berfokus pada isu-isu kehidupan anak muda
+                    </p>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="about-card">
+                        <div class="about-icon">
+                            <i class="bi bi-eye"></i>
+                        </div>
+                        <h4>Visi Kami</h4>
+                        <p>Menjadi yayasan terdepan dalam menciptakan pemimpin muda yang berkualitas dan berintegritas untuk Indonesia yang lebih baik</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="about-card">
+                        <div class="about-icon">
+                            <i class="bi bi-bullseye"></i>
+                        </div>
+                        <h4>Misi Kami</h4>
+                        <p>Memberdayakan anak muda melalui program pendidikan, pelatihan kepemimpinan, dan pelayanan sosial yang berkelanjutan</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="about-card">
+                        <div class="about-icon">
+                            <i class="bi bi-heart"></i>
+                        </div>
+                        <h4>Nilai Kami</h4>
+                        <p>Integritas, Komitmen, Kolaborasi, dan Inovasi menjadi fondasi dalam setiap program yang kami jalankan</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section class="programs-section section-padding" id="programs">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="section-title" data-aos="fade-up">Program Unggulan</h2>
+                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                        Program-program kami dirancang untuk memberikan dampak nyata bagi masyarakat
+                    </p>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="program-card">
+                        <div class="program-img">
+                            <i class="bi bi-mortarboard"></i>
+                        </div>
+                        <div class="program-content">
+                            <h4>Leadership Academy</h4>
+                            <p>Program pelatihan kepemimpinan intensif untuk anak muda berpotensi dengan kurikulum internasional</p>
+                            <a href="#" class="btn-primary-custom">Pelajari Lebih Lanjut</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="program-card">
+                        <div class="program-img">
+                            <i class="bi bi-briefcase"></i>
+                        </div>
+                        <div class="program-content">
+                            <h4>Career Development</h4>
+                            <p>Pemberdayaan pemuda menghadapi tantangan pengangguran melalui pelatihan kerja dan wirausaha</p>
+                            <a href="#" class="btn-primary-custom">Pelajari Lebih Lanjut</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="program-card">
+                        <div class="program-img">
+                            <i class="bi bi-piggy-bank"></i>
+                        </div>
+                        <div class="program-content">
+                            <h4>Financial Literacy</h4>
+                            <p>Edukasi keuangan untuk meningkatkan kesejahteraan ekonomi masyarakat dan kemandirian finansial</p>
+                            <a href="#" class="btn-primary-custom">Pelajari Lebih Lanjut</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+                    <div class="program-card">
+                        <div class="program-img">
+                            <i class="bi bi-people"></i>
+                        </div>
+                        <div class="program-content">
+                            <h4>Community Service</h4>
+                            <p>Pelayanan sosial dan konseling untuk komunitas yang membutuhkan bantuan dan dukungan</p>
+                            <a href="#" class="btn-primary-custom">Pelajari Lebih Lanjut</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
+                    <div class="program-card">
+                        <div class="program-img">
+                            <i class="bi bi-book"></i>
+                        </div>
+                        <div class="program-content">
+                            <h4>Educational Support</h4>
+                            <p>Program beasiswa dan dukungan pendidikan untuk anak muda dari keluarga kurang mampu</p>
+                            <a href="#" class="btn-primary-custom">Pelajari Lebih Lanjut</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="700">
+                    <div class="program-card">
+                        <div class="program-img">
+                            <i class="bi bi-globe"></i>
+                        </div>
+                        <div class="program-content">
+                            <h4>Cultural Exchange</h4>
+                            <p>Pertukaran pemuda internasional untuk memperluas wawasan dan jaringan global</p>
+                            <a href="#" class="btn-primary-custom">Pelajari Lebih Lanjut</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="impact-section section-padding" id="impact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="section-title" data-aos="fade-up">Dampak Kami</h2>
+                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                        Angka-angka yang menunjukkan kontribusi nyata kami untuk masyarakat
+                    </p>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stat-card">
+                        <div class="stat-number" data-count="1000">0</div>
+                        <div class="stat-label">Pemuda Dilatih</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stat-card">
+                        <div class="stat-number" data-count="20">0</div>
+                        <div class="stat-label">Program Dilaksanakan</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="stat-card">
+                        <div class="stat-number" data-count="10">0</div>
+                        <div class="stat-label">Kota Terjangkau</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="500">
+                    <div class="stat-card">
+                        <div class="stat-number" data-count="15">0</div>
+                        <div class="stat-label">Mitra Kolaborasi</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="news-section section-padding" id="news">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="section-title" data-aos="fade-up">Berita Terkini</h2>
+                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                        Update terbaru dari kegiatan dan program ICLF Foundation
+                    </p>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="news-card">
+                        <div class="news-img">
+                            <i class="bi bi-newspaper"></i>
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <i class="bi bi-calendar"></i> 25 November 2025
+                            </div>
+                            <h5>Leadership Batch 2025 Resmi Dibuka</h5>
+                            <p>Pendaftaran program leadership academy tahun 2024 telah dibuka dengan kuota terbatas</p>
+                            <a href="#" class="btn-primary-custom">Baca Selengkapnya</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="news-card">
+                        <div class="news-img">
+                            <i class="bi bi-trophy"></i>
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <i class="bi bi-calendar"></i> 25 November 2025
+                            </div>
+                            <h5>Achievement: 1000 Alumni Berhasil</h5>
+                            <p>Milestone penting: 1000 alumni telah berhasil melalui program kami</p>
+                            <a href="#" class="btn-primary-custom">Baca Selengkapnya</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="news-card">
+                        <div class="news-img">
+                            <i class="bi bi-handshake"></i>
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <i class="bi bi-calendar"></i> 23 November 2025
+                            </div>
+                            <h5>Kerjasama dengan Perusahaan Multinasional</h5>
+                            <p>ICLF Foundation menjalin kerjasama strategis untuk program magang alumni</p>
+                            <a href="#" class="btn-primary-custom">Baca Selengkapnya</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section section-padding" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="section-title" data-aos="fade-up">Hubungi Kami</h2>
+                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                        Bergabunglah bersama kami dalam menciptakan perubahan positif
+                    </p>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-lg-8 mx-auto" data-aos="fade-up" data-aos-delay="200">
+                    <div class="contact-form">
+                        <form id="contactForm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="Nama Lengkap" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="email" class="form-control" placeholder="Email" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="tel" class="form-control" placeholder="Nomor Telepon">
+                                </div>
+                                <div class="col-md-6">
+                                    <select class="form-select">
+                                        <option selected>Pilih Program</option>
+                                        <option>Leadership Academy</option>
+                                        <option>Career Development</option>
+                                        <option>Financial Literacy</option>
+                                        <option>Community Service</option>
+                                        <option>Lainnya</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <textarea class="form-control" rows="5" placeholder="Pesan Anda" required></textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <button type="submit" class="btn-primary-custom">Kirim Pesan</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-widget">
+                        <div class="footer-logo">
+                            <img src="https://z-cdn-media.chatglm.cn/files/64bb3391-bca4-4728-ae7e-21bbc4ab7da9_logo.jpg?auth_key=1863876218-410ca333e7c14782a6a019f501ef1629-0-ba442968cd35ddb4c585faa6bf6927a2" 
+                                 alt="ICLF Foundation Logo" 
+                                 class="footer-logo-img">
+                            <div class="footer-logo-text">
+                                <span class="footer-logo-main">ICLF Foundation</span>
+                                <span class="footer-logo-sub">Yayasan Pemimpin Perubahan Indonesia</span>
+                            </div>
+                        </div>
+                        <p>Yayasan Pemimpin Perubahan Indonesia - Menciptakan generasi pemimpin yang berkomitmen untuk perubahan positif</p>
+                        <div class="social-icons">
+                            <a href="#"><i class="bi bi-facebook"></i></a>
+                            <a href="#"><i class="bi bi-instagram"></i></a>
+                            <a href="#"><i class="bi bi-twitter"></i></a>
+                            <a href="#"><i class="bi bi-linkedin"></i></a>
+                            <a href="#"><i class="bi bi-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-widget">
+                        <h5>Quick Links</h5>
+                        <ul>
+                            <li><a href="#home">Beranda</a></li>
+                            <li><a href="#about">Tentang Kami</a></li>
+                            <li><a href="#programs">Program</a></li>
+                            <li><a href="#impact">Dampak</a></li>
+                            <li><a href="#news">Berita</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-widget">
+                        <h5>Program Kami</h5>
+                        <ul>
+                            <li><a href="#">Leadership Academy</a></li>
+                            <li><a href="#">Career Development</a></li>
+                            <li><a href="#">Financial Literacy</a></li>
+                            <li><a href="#">Community Service</a></li>
+                            <li><a href="#">Educational Support</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-widget">
+                        <h5>Kontak Info</h5>
+                        <ul>
+                            <li><i class="bi bi-geo-alt"></i> Cikarang, Indonesia</li>
+                            <li><i class="bi bi-telephone"></i> +62 21 1234 5678</li>
+                            <li><i class="bi bi-envelope"></i> info@iclffoundation.org</li>
+                            <li><i class="bi bi-clock"></i> Senin - Jumat: 09:00 - 17:00</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ICLF Foundation. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="bi bi-arrow-up"></i>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Animation JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100,
+            disable: 'mobile' // Disable animations on mobile for better performance
+        });
+
+        // Loader
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loader').classList.add('hidden');
+            }, 1000);
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.padding = '10px 0';
+                navbar.style.background = 'rgba(255, 248, 225, 0.98)';
+            } else {
+                navbar.style.padding = '15px 0';
+                navbar.style.background = 'rgba(255, 248, 225, 0.95)';
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80; // Account for fixed navbar
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu after clicking
+                    const navbarCollapse = document.querySelector('.navbar-collapse');
+                    if (navbarCollapse.classList.contains('show')) {
+                        navbarCollapse.classList.remove('show');
+                    }
+                }
+            });
+        });
+
+        // Counter animation
+        const counters = document.querySelectorAll('.stat-number');
+        const speed = 200;
+
+        const countUp = () => {
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-count');
+                const count = +counter.innerText;
+                const increment = target / speed;
+
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(countUp, 10);
+                } else {
+                    counter.innerText = target + '+';
+                }
+            });
+        };
+
+        // Trigger counter animation when in viewport
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    countUp();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        const statsSection = document.querySelector('.impact-section');
+        if (statsSection) {
+            observer.observe(statsSection);
+        }
+
+        // Back to top button
+        const backToTopButton = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Create success message
+            const successMessage = document.createElement('div');
+            successMessage.className = 'alert alert-success mt-3';
+            successMessage.textContent = 'Terima kasih! Pesan Anda telah berhasil dikirim.';
+            
+            // Insert after form
+            this.appendChild(successMessage);
+            
+            // Reset form
+            this.reset();
+            
+            // Remove message after 5 seconds
+            setTimeout(() => {
+                successMessage.remove();
+            }, 5000);
+        });
+
+        // Add hover effect to cards (desktop only)
+        if (window.innerWidth > 768) {
+            document.querySelectorAll('.program-card, .news-card, .about-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        }
+
+        // Logo hover effect
+        document.querySelectorAll('.logo-img, .footer-logo-img').forEach(logo => {
+            logo.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.1) rotate(5deg)';
+            });
+            
+            logo.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1) rotate(0deg)';
+            });
+        });
+
+        // Hero image hover effect (desktop only)
+        if (window.innerWidth > 768) {
+            const heroImage = document.querySelector('.hero-image-container img');
+            if (heroImage) {
+                heroImage.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.05)';
+                });
+                
+                heroImage.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            }
+        }
+
+        // Handle window resize
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                // Re-initialize AOS on resize
+                AOS.refresh();
+            }, 250);
+        });
+
+        // Touch-friendly mobile interactions
+        if ('ontouchstart' in window) {
+            document.querySelectorAll('.btn-primary-custom, .btn-outline-custom').forEach(button => {
+                button.addEventListener('touchstart', function() {
+                    this.style.transform = 'scale(0.95)';
+                });
+                
+                button.addEventListener('touchend', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+        }
+
+        // Prevent zoom on double tap for mobile
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function (event) {
+            const now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+    </script>
+</body>
+</html>
